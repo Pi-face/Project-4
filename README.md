@@ -1,11 +1,5 @@
 # Project Overview
 
-[Wire-Frame](https://www.figma.com/file/udbS0aJ9BOnxWLWPkfbhUV/Flash-Card-Memory-Game)
-
-[React Architecture]()
-
-
-
 
 ## Project Schedule
 
@@ -76,4 +70,3 @@ console.log('Lets start it.')
 ```
 
 ## Issues and Resolutions
-
