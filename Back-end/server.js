@@ -1,9 +1,12 @@
 const express = require('express');
 const connectDB = require('./config/db');
-
+const bodyParser = require('body-parser')
 const app = express();
 // connect database
 connectDB();
+
+//Init middleware body parser
+app.use(bodyParser.json())
 
 app.get('/', (req,res)=> 
 res.json({msg: 'Welcome to the flash cards API...'})
