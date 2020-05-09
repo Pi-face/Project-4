@@ -17,6 +17,7 @@ app.use('/api/users',require('./routes/users'));
 app.use('/api/auth',require('./routes/auth'));
 app.use('/api/flashcards',require('./routes/flashcards'));
 app.use('/api/categories',require('./routes/categories'));
+app.use('/api/flashcards',require('./routes/flashcards'));
 
 const PORT = process.env.PORT || 5000;
 
