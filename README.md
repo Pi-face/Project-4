@@ -7,7 +7,7 @@
 |---|---| ---|
 |Friday| Project Description and planning | Complete
 |Saturday| Draft and structure of the Front-end| -
-|Sunday| Draft and structure of the Back-end|-
+|Sunday| Draft and structure of the Back-end|Complete
 |Monday| Creation Authentication | -
 |Tuesday|Connecting Back with Front| -
 |Wednesday| Styling and animations | -
