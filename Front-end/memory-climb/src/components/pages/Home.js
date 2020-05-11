@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Categories from '../categories/Categories';
 
 const Home = () => {
     return(
+    <div className='categories'>
         <div>
-            <h1>Home</h1>
+            {/* {Categories Section} */}
         </div>
+        <div>
+       <Categories/>
+       </div>
+    </div>
+
     )
 }
 

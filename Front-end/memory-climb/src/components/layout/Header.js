@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import {Navbar,Nav,NavDropdown,Form,FormControl,Button} from 'react-bootstrap';
+import {Navbar,Nav} from 'react-bootstrap';
 import Home from '../pages/Home';
 
 
@@ -8,6 +8,7 @@ import Home from '../pages/Home';
 
 const Header = () =>{
     return(
+<div className='header'>
 <Navbar bg="light" expand="lg">
   <Navbar.Brand href="/"className='fas fa-meteor'>Memory Climb</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -19,6 +20,7 @@ const Header = () =>{
     </Nav>
   </Navbar.Collapse>
 </Navbar>
+</div>
     )
 }
 

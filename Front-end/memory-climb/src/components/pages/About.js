@@ -5,7 +5,7 @@ const About = () => {
         <div>
           <h1>About This App</h1>
           <p className="my-1">
-            This is a full stack Flashcard Creator.
+            This is a Fucking full stack application.
           </p>
         </div>
     )

@@ -5,10 +5,14 @@ import Header  from './components/layout/Header';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import CategoryState from './context/category/CategoryState'
+
 function App() {
   return (
+    <CategoryState>
     <Router>
-     <Fragment>
+        <Fragment>
 
         <Header />
 
@@ -19,8 +23,9 @@ function App() {
             </Switch>
            </div>
 
-     </Fragment>
-    </Router>
+        </Fragment>
+       </Router>
+    </CategoryState>
   );
 }
 
