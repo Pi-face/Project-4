@@ -8,7 +8,7 @@ const Home = () => {
             {/* {Categories Section} */}
         </div>
         <div>
-       <Categories/>
+          <Categories/>
        </div>
     </div>
 

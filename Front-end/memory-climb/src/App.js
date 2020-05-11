@@ -1,6 +1,5 @@
 import React,{Fragment} from 'react';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
-import './App.css';
 import Header  from './components/layout/Header';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
