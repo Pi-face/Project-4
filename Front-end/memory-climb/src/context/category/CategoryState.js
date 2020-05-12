@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import CategoryContext from './categoryContext';
 import categoryReducer from './categoryReducer';
 import {
@@ -30,7 +30,8 @@ const CategoryState = props =>{
             title:"Science",
 
         }
-      ]  
+      ],
+      current: null
     }
 
 
@@ -38,13 +39,23 @@ const CategoryState = props =>{
     const [state,dispatch] = useReducer(categoryReducer, initialState)
 
     //ADD Category
+    const addCategory = category =>{
+        category.id = uuidv4();;
+        dispatch({type: ADD_CATEGORY, payload: category});
+    };
 
     //DELETE Category
-
+    const deleteCategory = id =>{
+        dispatch({type: DELETE_CATEGORY, payload: id});
+    };
     //SET CURRENT Category
-
+    const setCurrent = category =>{
+        dispatch({type: SET_CURRENT, payload: category});
+    };
     //CLEAR CURRENT Category
-
+    const clearCurrent = () =>{
+        dispatch({type: CLEAR_CURRENT});
+    };
     //UPDATE Category
 
     //FILTER Category
@@ -54,7 +65,12 @@ const CategoryState = props =>{
     return(
         <CategoryContext.Provider
         value={{
-            category:state.category
+            category:state.category,
+            current: state.current,
+            addCategory,
+            deleteCategory,
+            setCurrent,
+            clearCurrent,
         }}>
             {props.children}
         </CategoryContext.Provider>
