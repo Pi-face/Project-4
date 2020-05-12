@@ -5,12 +5,13 @@ import CategoryContext from '../../context/category/categoryContext';
 const Categoryitem = ({ category }) =>{
 
     const categoryContext = useContext(CategoryContext);
-    const {deleteCategory,setCurrent} = categoryContext;
+    const {deleteCategory,setCurrent,clearCurrent} = categoryContext;
 
     const { id , title} = category;
 
     const onDelete = () =>{
-        deleteCategory(id)
+        deleteCategory(id);
+        clearCurrent();
      }
 
 

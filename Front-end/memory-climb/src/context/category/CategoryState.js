@@ -57,6 +57,9 @@ const CategoryState = props =>{
         dispatch({type: CLEAR_CURRENT});
     };
     //UPDATE Category
+    const updateCategory = category =>{
+        dispatch({type: UPDATE_CATEGORY, payload: category});
+    };
 
     //FILTER Category
   
@@ -71,6 +74,7 @@ const CategoryState = props =>{
             deleteCategory,
             setCurrent,
             clearCurrent,
+            updateCategory,
         }}>
             {props.children}
         </CategoryContext.Provider>

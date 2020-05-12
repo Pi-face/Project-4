@@ -7,6 +7,7 @@ import {
     FILTER_CATEGORY,
     CLEAR_FILTER
 } from '../typesCategory';
+import Category from '../../components/categories/CategoryForm';
 
 export default (state, action) =>{
     switch(action.type){
@@ -14,6 +15,12 @@ export default (state, action) =>{
             return{
                 ...state,
                 category: [...state.category, action.payload]
+            };
+        case UPDATE_CATEGORY:
+            return{
+                ...state,
+                category: state.category.map(category => 
+                    category.id === action.payload.id ? action.payload : category)
             };
         case DELETE_CATEGORY:
             return{
@@ -30,6 +37,7 @@ export default (state, action) =>{
                     ...state,
                     current: null
                 };
+        
         default:
             return state;
     }
