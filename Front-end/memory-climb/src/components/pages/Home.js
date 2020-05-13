@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import Categories from '../categories/Categories';
-import CategoryForm from '../categories/CategoryForm'
+import Flashcards from '../categories/Flashcards';
+import CategoryForm from '../categories/FlashcardForm'
+import FlashcardsFilter from '../categories/flashcardsFilter'
 
 const Home = () => {
     return(
@@ -8,9 +9,10 @@ const Home = () => {
         <div>
             {/* {Categories Section} */}
           <CategoryForm/>
+          <FlashcardsFilter/>
         </div>
         <div>
-          <Categories/>
+          <Flashcards/>
        </div>
     </div>
 

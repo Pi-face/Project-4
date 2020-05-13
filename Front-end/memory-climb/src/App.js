@@ -5,11 +5,11 @@ import Home from './components/pages/Home';
 import About from './components/pages/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import CategoryState from './context/category/CategoryState'
+import FlashcardsState from './context/category/flashcardsState'
 
 function App() {
   return (
-    <CategoryState>
+    <FlashcardsState>
     <Router>
         <Fragment>
 
@@ -24,7 +24,7 @@ function App() {
 
         </Fragment>
        </Router>
-    </CategoryState>
+    </FlashcardsState>
   );
 }
 
