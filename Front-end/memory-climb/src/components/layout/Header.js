@@ -1,37 +1,71 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { Fragment, useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
+import FlashcardsContext from '../../context/category/flashcardsContext';
 import {Navbar,Nav} from 'react-bootstrap';
-import Home from '../pages/Home';
 
+const Header = ({ title, icon }) => {
+  const authContext = useContext(AuthContext);
+  const flashcardsContext = useContext(FlashcardsContext);
 
+  const { isAuthenticated, logout, user, loadUser } = authContext;
 
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
 
-const Header = () =>{
-    return(
-<div className='header'>
-<Navbar bg="light" expand="lg">
-  <Navbar.Brand href="/"className='fas fa-meteor'>Memory Climb</Navbar.Brand>
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
-      <Nav.Link href='/about'>About</Nav.Link>
-      <Nav.Link href='/login'>Log in</Nav.Link>
-      <Nav.Link href='/register'>Register</Nav.Link>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
-</div>
-    )
-}
+  const onLogout = () => {
+    logout();
 
-// Header.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   icon: PropTypes.string,
-// }
+  };
 
-// Header.defaultProps = {
-//     title: 'Memory Climb',
-//     icon: 'fas fa-meteor',
-// }
+  const authLinks = (
+    <Fragment>
+      <Navbar.Text>Signed in as: <span>{user && user.name}</span></Navbar.Text>
+      <li>
+        <a onClick={onLogout} href='#!'>
+          <i className='fas fa-sign-out-alt' />{' '}
+          <span className='hide-sm' style={{textDecoration:"none"}} >Logout</span>
+        </a>
+      </li>
+    </Fragment>
+  );
 
-export default Header 
+  const guestLinks = (
+    <Fragment>
+      <div>
+            <Nav.Link href='/register'>Register</Nav.Link>
+      </div>
+      <div>
+             <Nav.Link href='/login'>Login</Nav.Link>
+      </div>
+      <div>
+             <Nav.Link href='/about'>About</Nav.Link>
+      </div>
+    </Fragment>
+  );
+
+  return (
+    <div>
+          <Navbar bg="light" expand="lg">
+                <Navbar.Brand href="/"className={icon}>{title}</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">{isAuthenticated ? authLinks : guestLinks}</Navbar.Collapse>
+          </Navbar>
+    </div>
+  );
+};
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string
+};
+
+Header.defaultProps = {
+  title: 'Memory Climb',
+  icon: 'fas fa-mountain'
+};
+
+export default Header;

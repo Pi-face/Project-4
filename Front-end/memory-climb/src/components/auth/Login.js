@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
+import {Form} from 'react-bootstrap';
 
 const Login = props => {
   const alertContext = useContext(AlertContext);
@@ -49,25 +50,25 @@ const Login = props => {
       </h1>
       <form onSubmit={onSubmit}>
         <div className='form-group'>
-          <label htmlFor='email'>Email Address</label>
-          <input
-            id='email'
-            type='email'
-            name='email'
-            value={email}
-            onChange={onChange}
-            required
+          <Form.Control 
+          placeholder="Email"
+          id='email'
+          type='email'
+          name='email'
+          value={email}
+          onChange={onChange}
+          required 
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='password'>Password</label>
-          <input
-            id='password'
-            type='password'
-            name='password'
-            value={password}
-            onChange={onChange}
-            required
+          <Form.Control 
+          placeholder="Password"
+          id='password'
+          type='password'
+          name='password'
+          value={password}
+          onChange={onChange}
+          required
           />
         </div>
         <input
