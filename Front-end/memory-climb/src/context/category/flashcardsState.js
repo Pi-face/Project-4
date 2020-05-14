@@ -49,7 +49,7 @@ const FlashcardsState = props =>{
 
     //ADD flashcards
     const addFlashcard = flashcard =>{
-        flashcard.id = uuidv4();;
+        flashcard.id = uuidv4();
         dispatch({type: ADD_FLASHCARD, payload: flashcard});
     };
 
