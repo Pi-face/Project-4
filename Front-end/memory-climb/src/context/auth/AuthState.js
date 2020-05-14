@@ -30,7 +30,7 @@ const AuthState = props => {
     setAuthToken(localStorage.token);
 
     try {
-      const res = await axios.get('https://flashcardsapi45.herokuapp.com/api/auth');
+      const res = await axios.get('https://ilikebigbackends.herokuapp.com/api/auth');
       dispatch({
         type: USER_LOADED,
         payload: res.data
@@ -49,7 +49,7 @@ const AuthState = props => {
     };
 
     try {
-      const res = await axios.post('https://flashcardsapi45.herokuapp.com/api/users', formData, config);
+      const res = await axios.post('https://ilikebigbackends.herokuapp.com/api/users', formData, config);
       console.log('RES IN STATE',res)
       dispatch({
         type: REGISTER_SUCCESS,
@@ -74,7 +74,7 @@ const AuthState = props => {
     };
 
     try {
-      const res = await axios.post('https://flashcardsapi45.herokuapp.com/api/auth', formData, config);
+      const res = await axios.post('https://ilikebigbackends.herokuapp.com/api/auth', formData, config);
 
       dispatch({
         type: LOGIN_SUCCESS,
