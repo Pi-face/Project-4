@@ -6,9 +6,11 @@ import About from './components/pages/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import FlashcardsState from './context/category/flashcardsState'
+import AuthState from './context/auth/AuthState'
 
 function App() {
   return (
+    <AuthState>
     <FlashcardsState>
     <Router>
         <Fragment>
@@ -25,6 +27,7 @@ function App() {
         </Fragment>
        </Router>
     </FlashcardsState>
+    </AuthState>
   );
 }
 
