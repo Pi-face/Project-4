@@ -5,6 +5,8 @@ export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 export const UPDATE_FLASHCARD = 'UPDATE_FLASHCARD';
 export const FILTER_FLASHCARD = 'FILTER_FLASHCARD';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
+export const FLASHCARD_ERROR = 'FLASHCARD_ERROR';
+
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 

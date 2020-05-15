@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 import flashcardsContext from './flashcardsContext';
 import flashcardsReducer from './flashcardsReducer';
 import {
@@ -9,38 +9,16 @@ import {
     CLEAR_CURRENT,
     UPDATE_FLASHCARD,
     FILTER_FLASHCARD,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    FLASHCARD_ERROR,
 } from '../types';
 
 const FlashcardsState = props =>{
     const initialState = {
-      flashcards:[
-        {
-           id: 1,
-           imagesURL: "https://i.ytimg.com/vi/Kp2bYWRQylk/maxresdefault.jpg",
-           question: "What is math?",
-           answer: "2+2",
-           category: "Math",
-          
-        },
-        {
-            id: 2,
-            imagesURL: "https://tedideas.files.wordpress.com/2020/03/final_credit-alamy-1.jpg?w=1024",
-            question: "What are Animals",
-            answer: "Yeah i like animals",
-            category: "Animals",
-          
-        },
-        {
-            id: 3,
-            imagesURL: "https://images.artwanted.com/large/70/4788_66470.jpg",
-            question: "Wizards",
-            answer: "Wizard Battle",
-            category: "Magic Battle",
-        }
-      ],
+      flashcards:[],
       current: null,
       filtered: null,
+      error: null,
     }
 
 
@@ -48,9 +26,25 @@ const FlashcardsState = props =>{
     const [state, dispatch] = useReducer(flashcardsReducer, initialState)
 
     //ADD flashcards
-    const addFlashcard = flashcard =>{
-        flashcard.id = uuidv4();
-        dispatch({type: ADD_FLASHCARD, payload: flashcard});
+    const addFlashcard = async flashcard =>{
+        const config= {
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            const res = await axios.post('https://ilikebigbackends.herokuapp.com/api/flashcards', flashcard, config);
+      
+            dispatch({
+              type: ADD_FLASHCARD,
+              payload: res.data
+            });
+          } catch (err) {
+            dispatch({
+              type: FLASHCARD_ERROR,
+              payload: err.response.msg
+            });
+          }
     };
 
     //DELETE flashcard
@@ -86,6 +80,7 @@ const FlashcardsState = props =>{
             flashcards:state.flashcards,
             current: state.current,
             filtered: state.filtered,
+            error: state.error,
             addFlashcard,
             deleteFlashcard,
             setCurrent,

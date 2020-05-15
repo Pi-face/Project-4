@@ -5,7 +5,8 @@ import {
     CLEAR_CURRENT,
     UPDATE_FLASHCARD,
     FILTER_FLASHCARD,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    FLASHCARD_ERROR,
 } from '../types';
 import Category from '../../components/categories/FlashcardForm';
 
@@ -50,6 +51,11 @@ export default (state, action) =>{
                 ...state,
                     filtered: null
                 };
+        case FLASHCARD_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            }
         default:
             return state;
     }
