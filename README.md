@@ -6,10 +6,10 @@
 |  Day | Deliverable | Status
 |---|---| ---|
 |Friday| Project Description and planning | Complete
-|Saturday| Draft and structure of the Front-end| -
+|Saturday| Draft and structure of the Front-end| Complete
 |Sunday| Draft and structure of the Back-end|Complete
-|Monday| Creation Authentication | -
-|Tuesday|Connecting Back with Front| -
+|Monday| Creation Authentication | Complete
+|Tuesday|Connecting Back with Front| Complete
 |Wednesday| Styling and animations | -
 |Thursday| Finishing Touches | -
 |Friday|Finishing Touches| -
