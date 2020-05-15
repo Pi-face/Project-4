@@ -3,12 +3,14 @@ import axios from 'axios';
 import flashcardsContext from './flashcardsContext';
 import flashcardsReducer from './flashcardsReducer';
 import {
+    GET_FLASHCARDS,
     ADD_FLASHCARD,
     DELETE_FLASHCARD,
     SET_CURRENT,
     CLEAR_CURRENT,
     UPDATE_FLASHCARD,
     FILTER_FLASHCARD,
+    CLEAR_FLASHCARDS,
     CLEAR_FILTER,
     FLASHCARD_ERROR,
 } from '../types';
@@ -24,6 +26,33 @@ const FlashcardsState = props =>{
 
 
     const [state, dispatch] = useReducer(flashcardsReducer, initialState)
+
+   //Get flashcards
+   const getFlashcards = async flashcard =>{
+    const config= {
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.get('https://ilikebigbackends.herokuapp.com/api/flashcards');
+  
+        dispatch({
+          type: GET_FLASHCARDS,
+          payload: res.data
+        });
+      } catch (err) {
+        dispatch({
+          type: FLASHCARD_ERROR,
+          payload: err.response.msg
+        });
+      }
+};
+
+
+
+
+
 
     //ADD flashcards
     const addFlashcard = async flashcard =>{
@@ -46,11 +75,29 @@ const FlashcardsState = props =>{
             });
           }
     };
-
+  
     //DELETE flashcard
-    const deleteFlashcard = id =>{
-        dispatch({type: DELETE_FLASHCARD, payload: id});
+    const deleteFlashcard = async id =>{
+        try {
+            await axios.delete(`https://ilikebigbackends.herokuapp.com/api/flashcards/${id}`);
+      
+            dispatch({
+              type: DELETE_FLASHCARD,
+              payload: id
+            });
+          } catch (err) {
+            dispatch({
+              type: FLASHCARD_ERROR,
+              payload: err.response.msg
+            });
+          }
     };
+
+    //CLEAR Flashcards
+    const clearFlashcards = () =>{
+        dispatch({type: CLEAR_FLASHCARDS});
+    };
+
     //SET CURRENT Flashcard
     const setCurrent = flashcard =>{
         dispatch({type: SET_CURRENT, payload: flashcard});
@@ -88,6 +135,8 @@ const FlashcardsState = props =>{
             updateFlashcard,
             filterFlashcard,
             clearFilter,
+            getFlashcards,
+            clearFlashcards
         }}>
             {props.children}
         </flashcardsContext.Provider>

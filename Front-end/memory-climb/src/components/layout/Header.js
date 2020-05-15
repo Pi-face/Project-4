@@ -10,6 +10,7 @@ const Header = ({ title, icon }) => {
   const flashcardsContext = useContext(FlashcardsContext);
 
   const { isAuthenticated, logout, user, loadUser } = authContext;
+  const {clearFlashcards} = flashcardsContext;
 
   useEffect(() => {
     loadUser();
@@ -18,6 +19,7 @@ const Header = ({ title, icon }) => {
 
   const onLogout = () => {
     logout();
+    clearFlashcards();
 
   };
 
@@ -41,9 +43,6 @@ const Header = ({ title, icon }) => {
       <div>
              <Nav.Link href='/login'>Login</Nav.Link>
       </div>
-      <div>
-             <Nav.Link href='/about'>About</Nav.Link>
-      </div>
     </Fragment>
   );
 
@@ -65,7 +64,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
   title: 'Memory Climb',
-  icon: 'fas fa-mountain'
+  icon: 'fas fa-meteor'
 };
 
 export default Header;

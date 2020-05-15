@@ -7,10 +7,10 @@ const Categoryitem = ({ flashcards }) =>{
     const flashcardsContext = useContext(FlashcardsContext);
     const {deleteFlashcard,setCurrent,clearCurrent} = flashcardsContext;
 
-    const { id , question , answer, category, imagesURL} = flashcards;
+    const { _id , question , answer, category, imagesURL} = flashcards;
 
     const onDelete = () =>{
-        deleteFlashcard(id);
+        deleteFlashcard(_id);
         clearCurrent();
      }
 
